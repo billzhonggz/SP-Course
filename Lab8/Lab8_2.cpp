@@ -1,28 +1,52 @@
 #include<stdio.h>
-int convertStringInteger(char a);
+int powerOfTen(int a);
 int main()
 {
 	//Get the user's input.
 	printf("Please input a string. No longer than 20 characters.\n");
 	char input[21];
-	gets_s(input, 20);
-	//Foreach the string. 
+	gets_s(input,20);
+	char output[21];
 	int i;
-	int convertReturn[20];
-	for (i = 0; i < 21; i++)
+	int digitCount=0;
+	int result=0;
+	for (i = 0; i<21; i++)
 	{
-		convertReturn[i] = convertStringInteger(input[i]);
+		output[i] = 0;
 	}
-	printf("The output is %d.\n",convertReturn);
-
+	for (i = 0; i<21; i++)
+	{
+		if (!(input[i] >= 48 && input[i] <= 57))
+		{
+			break;
+		}
+		else 
+		{
+			output[i] = input[i];
+			digitCount++;
+		}
+	}
+	for (i = 0; i<21; i++)
+	{
+		output[i] = output[i] - 48;
+	}
+	for (i = 0; i < digitCount; i++)
+	{
+		result = result + (int)output[i] * (powerOfTen(digitCount - i - 1));
+	}
+	printf("The result is %d.\n",result); 
+	return 0;
 }
 
-int convertStringInteger(char a)
+int powerOfTen(int a)
 {
-	a = (int)a;
-	if (a >= 48 && a <= 57)
+	a = 1;
+	int i;
+	if (a == 0)
+		return 1;
+	for (i = 0; i < a; i++)
 	{
-		return a;
+		a = a * 10;
 	}
-	else return NULL;
+	return a;
 }
