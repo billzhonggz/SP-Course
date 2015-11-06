@@ -37,7 +37,7 @@ int main()
 			breakCount++;
 		}	
 	}
-	if (breakCount != 0)
+	if (breakCount == 0)
 		printf("This martix is symmtery.\n");
 	else
 		printf("This martix isn't symmtery.\n");
