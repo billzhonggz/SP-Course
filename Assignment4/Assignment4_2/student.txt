@@ -1,3 +1,0 @@
-David,88
-Bill,90
-Covey,80
